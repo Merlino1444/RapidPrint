@@ -1,0 +1,40 @@
+[package]
+name = "rapidprint"
+version = "2.0.0"
+edition = "2021"
+rust-version = "1.85"
+resolver = "3"
+description = "RapidPrint - print many PDF files at once, only your own pages"
+publish = false
+
+license = "MIT"
+readme = "README.md"
+
+[[bin]]
+name = "RapidPrint"
+path = "src/main.rs"
+
+
+[dependencies]
+eframe = "0.31"
+egui_extras = { version = "0.31", default-features = false }
+rfd = "0.15"
+serde_json = "1"
+libloading = "0.8"
+png = "0.17"
+roxmltree = "0.20"
+base64 = "0.22"
+winreg = "0.52"
+raw-window-handle = "0.6"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 4
+strip = true
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
